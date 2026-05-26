@@ -385,7 +385,7 @@ ${historyContext}
     if (textLower.includes('시장') || textLower.includes('밥') || textLower.includes('두부전골') || textLower.includes('요리') || textLower.includes('남편') || textLower.includes('먹었')) {
       accomplishedList.push("[따뜻한 연대 및 돌봄]: 무기력한 날임에도 집순이 한계를 극복하고 시장을 보아 밥을 지어 따뜻한 요리(두부전골 등)를 가족과 음미하며 정신 건강 회복에 기여했습니다.");
     }
-    if (textLower.includes('잠') || textLower.includes('잤') || textLower.includes('피곤') || textLower.includes('기절') || actualLower.includes('쉬었')) {
+    if (textLower.includes('잠') || textLower.includes('잤') || textLower.includes('피곤') || textLower.includes('기절') || textLower.includes('쉬었')) {
       accomplishedList.push("[생체 에너지 복원]: 외부의 위협 긴장도 아래서 심신이 과부하에 도달하자 억지로 움직이지 않고 깊은 수면을 취하여 안전망 장치를 성실하게 가동했습니다.");
     }
 
@@ -497,7 +497,26 @@ ${historyContext}
       return await fetchOpenAIAnalysis(unstructuredText, name, apikey);
     } else {
       // Fallback to our incredibly sophisticated local parser engine
-      return runLocalAnalysis(unstructuredText, name);
+      try {
+        return runLocalAnalysis(unstructuredText, name);
+      } catch (localErr) {
+        console.error('로컬 분석 엔진 오류:', localErr);
+        // Return safe default analysis instead of crashing
+        return {
+          mood: appState.currentMood,
+          date: new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' }),
+          dateRaw: new Date().toISOString(),
+          accomplished: [
+            "오늘도 하루를 버텨내며 자기 자신의 마음을 돌보려 했습니다.",
+            "복잡한 감정들을 정리하려고 이곳에 솔직하게 적어 주었습니다.",
+            "지친 하루 속에서도 앞으로 나아가려는 의지를 놓지 않았습니다."
+          ],
+          criticism: `${name}은 오늘 스스로에게 너무 높은 기준을 들이대고 있어요. 완벽하지 않은 하루라도 충분히 의미 있는 하루였답니다.`,
+          reason: `오늘 ${name}이 겪은 일들은 결코 가벼운 것이 아니었어요. 그 무게를 견디며 하루를 마무리한 것 자체가 대단한 성취입니다.`,
+          suggestion: "내일은 아침에 눈을 뜨자마자 이불 속에서 기지개를 한 번 쭈욱 펴 보세요. 그 10초의 스트레칭이 하루의 부드러운 시작이 됩니다.",
+          affirmation: affirmationsList[Math.floor(Math.random() * affirmationsList.length)]
+        };
+      }
     }
   }
 
@@ -543,7 +562,25 @@ ${historyContext}
       }, 2800);
     } catch (err) {
       clearInterval(msgInterval);
-      alert("AI 분석 연동 중 예기치 못한 문제가 발생했습니다:\n" + err.message + "\n\n* API 키가 올바른지 확인해 주세요. 혹은 일시적인 네트워크 문제일 수 있으니 다시 시도해 주세요.");
+      console.error('분석 오류:', err);
+
+      // API 오류와 코드 오류를 구분해서 표시
+      const isApiError = err.message && (
+        err.message.includes('HTTP') ||
+        err.message.includes('fetch') ||
+        err.message.includes('network') ||
+        err.message.includes('Failed to fetch') ||
+        err.message.includes('API') ||
+        err.message.includes('401') ||
+        err.message.includes('429') ||
+        err.message.includes('500')
+      );
+
+      if (isApiError) {
+        alert("🌐 OpenAI API 연동 중 문제가 발생했어요:\n" + err.message + "\n\n• API 키가 올바른지 확인해 주세요.\n• 일시적인 네트워크 문제일 수 있으니 잠시 후 다시 시도해 주세요.\n• API 사용량 한도를 초과했을 수도 있어요.");
+      } else {
+        alert("⚙️ 앱 내부에서 예기치 못한 오류가 발생했어요:\n" + (err.message || '알 수 없는 오류') + "\n\n구름이가 빠르게 고칠게요! 잠시 후 다시 시도해 주세요.");
+      }
       showScreen('write');
     }
   });
