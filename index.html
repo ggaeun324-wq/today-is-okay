@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="완벽주의 성향을 가진 분들을 위한 감정 안정 및 하루 객관화 안심 공간 - 오늘 괜찮았어">
+  <title>오늘 괜찮았어 ☁️ | 마음을 녹이는 안심 일기</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Wrapper (Mobile-first viewport container for sleek app feeling) -->
+  <div class="app-container">
+    
+    <!-- Top Global Bar (Header & Dark Mode Toggle) -->
+    <header class="global-header">
+      <div class="logo">
+        <span class="logo-emoji">☁️</span>
+        <h1 class="logo-text">오늘 괜찮았어</h1>
+      </div>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="테마 전환하기" title="테마 전환">
+        <!-- Sun icon (Light mode active) -->
+        <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon icon (Dark mode active) -->
+        <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Screens Container with Page Transitions -->
+    <main class="screens-viewport">
+
+      <!-- SCREEN 1: MAIN WELCOME / ONBOARDING -->
+      <section id="screen-main" class="app-screen active">
+        <!-- Floating Cloud Mascot 'Gureum-ee' -->
+        <div class="mascot-container">
+          <div class="gureum-mascot" id="main-mascot">
+            <!-- Cute SVG Cloud Character -->
+            <svg class="cloud-svg" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#E8F4FD" />
+                </linearGradient>
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#C2D6EC" flood-opacity="0.4"/>
+                </filter>
+              </defs>
+              <!-- Cloud Body -->
+              <path class="cloud-body" filter="url(#shadow)" d="M 40,80 
+                       A 25,25 0 0,1 35,40 
+                       A 25,25 0 0,1 70,30 
+                       A 30,30 0 0,1 120,40 
+                       A 25,25 0 0,1 125,80 
+                       A 20,20 0 0,1 40,80 Z" fill="url(#cloudGrad)"/>
+              
+              <!-- Cute Blush Cheeks -->
+              <ellipse class="blush" cx="50" cy="67" rx="8" ry="4" fill="#FFAEC9" opacity="0.8"/>
+              <ellipse class="blush" cx="105" cy="67" rx="8" ry="4" fill="#FFAEC9" opacity="0.8"/>
+              
+              <!-- Eyes (smiling curves) -->
+              <path class="cloud-eye eye-left" d="M 45,60 Q 50,56 55,60" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path class="cloud-eye eye-right" d="M 100,60 Q 105,56 110,60" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
+              
+              <!-- Smiling Mouth -->
+              <path class="cloud-mouth" d="M 73,70 Q 77,75 81,70" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
+              
+              <!-- Sparkles -->
+              <path class="cloud-sparkle sparkle-1" d="M20,25 L24,29 M24,25 L20,29" stroke="#FFF1A8" stroke-width="2.5" stroke-linecap="round"/>
+              <path class="cloud-sparkle sparkle-2" d="M135,30 L139,34 M139,30 L135,34" stroke="#FFF1A8" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <!-- Dynamic Speech Bubble -->
+          <div class="speech-bubble">
+            <p id="dynamic-greeting">오늘 하루도 참 애썼어요. 마음에 가두어 둔 무거운 계획이나 자책이 있다면, 저와 함께 찬찬히 내려놓고 살펴볼까요?</p>
+          </div>
+        </div>
+
+        <!-- Emotion Selector Card -->
+        <div class="cute-card mood-card-selector">
+          <h2 class="card-subtitle">지금 내 마음의 날씨는? ☁️</h2>
+          <div class="mood-grid">
+            <button class="mood-btn" data-mood="sunny" aria-label="맑음/설렘">
+              <span class="mood-emoji">☀️</span>
+              <span class="mood-label">맑음</span>
+            </button>
+            <button class="mood-btn" data-mood="good" aria-label="나쁘지 않음">
+              <span class="mood-emoji">🌤️</span>
+              <span class="mood-label">포근함</span>
+            </button>
+            <button class="mood-btn" data-mood="tired" aria-label="흐림/지침">
+              <span class="mood-emoji">☁️</span>
+              <span class="mood-label">지침</span>
+            </button>
+            <button class="mood-btn" data-mood="sad" aria-label="비/속상함">
+              <span class="mood-emoji">🌧️</span>
+              <span class="mood-label">속상함</span>
+            </button>
+            <button class="mood-btn" data-mood="anxious" aria-label="소나기/불안함">
+              <span class="mood-emoji">⛈️</span>
+              <span class="mood-label">불안함</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Action Grid Menu -->
+        <div class="action-buttons-stack">
+          <button id="btn-go-write" class="btn btn-primary btn-large">
+            <span class="btn-icon">📝</span>
+            오늘 하루 정리하러 가기
+          </button>
+          <button id="btn-go-history" class="btn btn-secondary btn-large">
+            <span class="btn-icon">📖</span>
+            지난 괜찮았던 날들 모아보기
+          </button>
+        </div>
+
+        <!-- Footer Info -->
+        <footer class="app-footer">
+          <p class="philosophy-quote">“완벽하게 지내지 못했어도 괜찮아요. 생각보다 당신은 꽤 멋지게 오늘 하루를 지켜냈거든요.”</p>
+        </footer>
+      </section>
+
+      <!-- SCREEN 2: DIARY WRITE FORM -->
+      <section id="screen-write" class="app-screen">
+        <!-- Floating mascot in miniature -->
+        <div class="write-header">
+          <div class="mini-mascot">
+            <!-- Small Cloud mascot -->
+            <svg class="cloud-svg-mini" viewBox="0 0 160 120">
+              <path class="cloud-body" d="M 40,80 A 25,25 0 0,1 35,40 A 25,25 0 0,1 70,30 A 30,30 0 0,1 120,40 A 25,25 0 0,1 125,80 A 20,20 0 0,1 40,80 Z" fill="#ffffff"/>
+              <ellipse class="blush" cx="50" cy="67" rx="8" ry="4" fill="#FFAEC9" opacity="0.8"/>
+              <ellipse class="blush" cx="105" cy="67" rx="8" ry="4" fill="#FFAEC9" opacity="0.8"/>
+              <circle cx="50" cy="58" r="3" fill="#4A3F35"/>
+              <circle cx="105" cy="58" r="3" fill="#4A3F35"/>
+              <path d="M 74,68 Q 77,72 80,68" stroke="#4A3F35" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <h2 class="section-title">오늘 하루는 어땠어? 💭</h2>
+        </div>
+
+        <form id="diary-form" class="diary-input-form" onsubmit="event.preventDefault();">
+          
+          <!-- Field 1: Original Intended Plan -->
+          <div class="input-group card-group">
+            <label for="input-plan" class="input-label">
+              <span class="label-number">1</span>
+              원래는 어떤 하루를 보내고 싶었어?
+            </label>
+            <div class="textarea-wrapper">
+              <textarea id="input-plan" class="diary-textarea" placeholder="원래 머릿속으로 그리던 이상적인 계획을 적어줘요&#10;(예: 아침 7시 기상, 독서 1시간, 운동, 공부 3시간 완료하기)" maxlength="500" required></textarea>
+              <div class="char-count"><span id="char-plan">0</span>/500</div>
+            </div>
+          </div>
+
+          <!-- Field 2: Actual Achievements -->
+          <div class="input-group card-group">
+            <label for="input-actual" class="input-label">
+              <span class="label-number">2</span>
+              오늘 실제로 한 일을 편하게 적어줘
+            </label>
+            <div class="textarea-wrapper">
+              <textarea id="input-actual" class="diary-textarea" placeholder="아무리 소소한 일이라도 괜찮아요. 한 일들을 편안하게 나열해볼까요?&#10;(예: 9시에 일어나 밥을 챙겨 먹었고, 낮잠을 잤고, 저녁에 1시간 동안 알고리즘 공부를 끄적였어...)" maxlength="500" required></textarea>
+              <div class="char-count"><span id="char-actual">0</span>/500</div>
+            </div>
+          </div>
+
+          <!-- Field 3: Lingering Regrets/Thoughts -->
+          <div class="input-group card-group">
+            <label for="input-regret" class="input-label">
+              <span class="label-number">3</span>
+              지금 가장 마음에 걸리는 건 뭐야?
+            </label>
+            <div class="textarea-wrapper">
+              <textarea id="input-regret" class="diary-textarea" placeholder="머릿속에서 자꾸 나를 다그치는 생각이나 후회를 털어놓아 봐요&#10;(예: 계획했던 운동도 못 가고 공부도 거의 안 해서 자꾸 나 자신한테 실망스럽고 화가 나...)" maxlength="500" required></textarea>
+              <div class="char-count"><span id="char-regret">0</span>/500</div>
+            </div>
+          </div>
+
+          <!-- Form Buttons -->
+          <div class="form-actions">
+            <button type="button" id="btn-write-back" class="btn btn-secondary">
+              돌아가기
+            </button>
+            <button type="submit" id="btn-submit-diary" class="btn btn-primary">
+              <span class="btn-sparkle">✨</span> 오늘 하루 다시 보기
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- SCREEN 3: LOADING SCREEN -->
+      <section id="screen-loading" class="app-screen">
+        <div class="loading-content">
+          <!-- Big Floating Cloud doing magic -->
+          <div class="loading-cloud-animation">
+            <svg class="cloud-svg-loading" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cloudGradLoading" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#FFF6D0" /> <!-- soft yellow warm glow -->
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <path class="cloud-body floating-anim" filter="url(#glow)" d="M 40,80 A 25,25 0 0,1 35,40 A 25,25 0 0,1 70,30 A 30,30 0 0,1 120,40 A 25,25 0 0,1 125,80 A 20,20 0 0,1 40,80 Z" fill="url(#cloudGradLoading)"/>
+              
+              <!-- Blinking Blushing Cheeks -->
+              <ellipse cx="50" cy="67" rx="8" ry="4" fill="#FFAEC9" class="blush-pulse"/>
+              <ellipse cx="105" cy="67" rx="8" ry="4" fill="#FFAEC9" class="blush-pulse"/>
+              
+              <!-- Sparkly winking eyes -->
+              <path d="M 44,58 L 54,62 M 54,58 L 44,62" stroke="#4A3F35" stroke-width="3" stroke-linecap="round"/>
+              <path d="M 100,60 Q 105,55 110,60" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
+              
+              <!-- Kiss/O mouth -->
+              <circle cx="77" cy="71" r="4" fill="#4A3F35"/>
+            </svg>
+            
+            <!-- Magic sparkles floating around cloud -->
+            <div class="floating-sparkle p1">✨</div>
+            <div class="floating-sparkle p2">⭐</div>
+            <div class="floating-sparkle p3">✨</div>
+            <div class="floating-sparkle p4">💛</div>
+          </div>
+          
+          <!-- Animated loading text -->
+          <div class="loading-text-container">
+            <h3 id="loading-msg">오늘 하루를 소중히 들여다보는 중이에요...</h3>
+            <p class="sub-loading-msg">조금 느려도 괜찮아요, 마음을 다해 살피고 있어요.</p>
+          </div>
+          <div class="loading-progress-bar">
+            <div class="loading-progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: AI ANALYSIS RESULT -->
+      <section id="screen-result" class="app-screen">
+        <div class="result-header">
+          <div class="mascot-compact">
+            <svg class="cloud-svg-mini" viewBox="0 0 160 120">
+              <path class="cloud-body" d="M 40,80 A 25,25 0 0,1 35,40 A 25,25 0 0,1 70,30 A 30,30 0 0,1 120,40 A 25,25 0 0,1 125,80 A 20,20 0 0,1 40,80 Z" fill="#ffffff"/>
+              <ellipse cx="50" cy="67" rx="8" ry="4" fill="#FFAEC9"/>
+              <ellipse cx="105" cy="67" rx="8" ry="4" fill="#FFAEC9"/>
+              <path d="M 44,58 Q 50,54 54,60" stroke="#4A3F35" stroke-width="3" fill="none"/>
+              <path d="M 100,58 Q 105,54 110,60" stroke="#4A3F35" stroke-width="3" fill="none"/>
+              <path d="M 72,70 Q 77,75 82,70" stroke="#4A3F35" stroke-width="3" fill="none"/>
+            </svg>
+          </div>
+          <h2 class="result-main-title">오늘도 참 괜찮은 하루였네요!</h2>
+          <p class="result-subtitle">우리가 발견한 오늘의 객관적인 조각들이에요.</p>
+        </div>
+
+        <!-- Cascade Animated Result Cards Grid -->
+        <div class="result-cards-stack">
+          
+          <!-- Card 1: What was actually accomplished -->
+          <article class="result-card card-yellow stagger-1">
+            <div class="card-icon-badge">🌸</div>
+            <div class="card-content-area">
+              <h3 class="card-title">오늘 실제로 해낸 것들</h3>
+              <ul class="result-list" id="res-accomplished">
+                <li>아침에 잊지 않고 건강하게 식사를 챙겨 먹었습니다.</li>
+                <li>잠시나마 소중한 몸의 충전을 위해 단잠을 취했습니다.</li>
+                <li>마음이 힘들어도 1시간 동안 공부에 열심히 몰두했습니다.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2: Self-push / excessive self-criticism detected -->
+          <article class="result-card card-pink stagger-2">
+            <div class="card-icon-badge">🍃</div>
+            <div class="card-content-area">
+              <h3 class="card-title">너무 스스로를 몰아붙인 부분</h3>
+              <p class="card-paragraph" id="res-criticism">
+                원래 세웠던 높은 기준과 계획들을 전부 완벽하게 해내지 못했다는 이유로 "나 자신에게 실망스럽다"라며 채찍질을 가하고 있어요. 하루는 꼭 생산적인 일로만 채워야 하는 완벽한 레이스가 아니에요. 지친 나를 평가하지 않는 연습이 조금 필요해 보여요.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 3: Why it was actually okay -->
+          <article class="result-card card-blue stagger-3">
+            <div class="card-icon-badge">☀️</div>
+            <div class="card-content-area">
+              <h3 class="card-title">오늘 괜찮았던 이유</h3>
+              <p class="card-paragraph" id="res-reason">
+                비록 계획의 전부를 채우지는 못했더라도, 힘든 마음을 이겨내고 코딩 공부를 1시간 이상 한 것은 대단한 성과예요. 또 계획에 맞추지 못했을 때 억지로 몸을 깎아 움직이기보다 충분히 자며 에너지를 채워준 것 역시 내일의 에너지를 빌리는 훌륭한 충전 방법이었답니다. 당신은 이미 충분히 안전하게 하루를 버티고 성과를 냈어요.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 4: Microscopic suggestion for tomorrow -->
+          <article class="result-card card-green stagger-4">
+            <div class="card-icon-badge">🐾</div>
+            <div class="card-content-area">
+              <h3 class="card-title">내일은 이렇게 해보자</h3>
+              <p class="card-paragraph" id="res-suggestion">
+                내일은 단 한 가지만 약속해요. 아침에 일어나 침대를 개기 전, 깊게 기지개를 켜며 숨을 후- 하고 뱉어보는 거예요. 성공률 100%인 아주 작은 실천으로 상쾌하게 내일을 시작해 봐요. 아무것도 하지 않아도 괜찮으니 이 미세한 시작만으로 충분합니다!
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 5: Safe Affirmation Sentence (Polaroid Style) -->
+          <div class="result-card card-affirmation stagger-5">
+            <div class="polaroid-inner">
+              <span class="deco-pin">📌</span>
+              <p class="affirmation-text" id="res-affirmation">"완벽하지 않아도 하루는 충분히 의미 있어. 이미 너는 최선을 다해 버텨냈으니까."</p>
+              <div class="polaroid-footer">
+                <span class="gureum-signature">구름이가 드림 ☁️</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Result Action Buttons -->
+        <div class="result-actions">
+          <button id="btn-save-diary" class="btn btn-primary btn-large">
+            💛 내 마음속에 저장하기
+          </button>
+          <button id="btn-result-home" class="btn btn-secondary btn-large">
+            🏠 홈 화면으로 돌아가기
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: HISTORY COLLECTION -->
+      <section id="screen-history" class="app-screen">
+        <div class="history-header">
+          <button id="btn-history-back" class="btn-back" aria-label="메인화면으로 돌아가기">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h2 class="section-title">모여진 안심 조각들 📖</h2>
+        </div>
+
+        <!-- Quick Interactive Emotional Statistics (Pure Canvas/SVG dashboard) -->
+        <div class="cute-card history-stats-card">
+          <h3 class="stats-title">우리가 함께 모아온 마음 날씨</h3>
+          <div class="stats-row">
+            <div class="stats-left">
+              <div class="stats-total-bubble">
+                <span class="stats-num" id="stats-total-count">0</span>
+                <span class="stats-label">일의 평화</span>
+              </div>
+            </div>
+            <div class="stats-right">
+              <!-- Inline Custom SVGs / Mini Bars representing emotions stored in database -->
+              <div class="mini-bar-chart" id="stats-chart-bars">
+                <!-- Statically scaffolded, dynamically filled -->
+                <div class="chart-bar-row">
+                  <span class="bar-emoji">☀️</span>
+                  <div class="bar-bg"><div class="bar-fill" id="bar-sunny" style="width: 0%"></div></div>
+                  <span class="bar-percent" id="bar-txt-sunny">0%</span>
+                </div>
+                <div class="chart-bar-row">
+                  <span class="bar-emoji">🌤️</span>
+                  <div class="bar-bg"><div class="bar-fill" id="bar-good" style="width: 0%"></div></div>
+                  <span class="bar-percent" id="bar-txt-good">0%</span>
+                </div>
+                <div class="chart-bar-row">
+                  <span class="bar-emoji">☁️</span>
+                  <div class="bar-bg"><div class="bar-fill" id="bar-tired" style="width: 0%"></div></div>
+                  <span class="bar-percent" id="bar-txt-tired">0%</span>
+                </div>
+                <div class="chart-bar-row">
+                  <span class="bar-emoji">🌧️</span>
+                  <div class="bar-bg"><div class="bar-fill" id="bar-sad" style="style: 0%"></div></div>
+                  <span class="bar-percent" id="bar-txt-sad">0%</span>
+                </div>
+                <div class="chart-bar-row">
+                  <span class="bar-emoji">⛈️</span>
+                  <div class="bar-bg"><div class="bar-fill" id="bar-anxious" style="width: 0%"></div></div>
+                  <span class="bar-percent" id="bar-txt-anxious">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Records List -->
+        <div class="history-list-wrapper">
+          <h3 class="list-title">하루 기록들</h3>
+          <div id="history-items-container" class="history-grid">
+            <!-- Empty State -->
+            <div class="empty-history-state" id="empty-history">
+              <span class="empty-emoji">🌸</span>
+              <p>아직 저장된 마음의 조각이 없어요.<br>오늘 있었던 일부터 소소하게 나누어 볼까요?</p>
+              <button id="btn-history-first-write" class="btn btn-primary" style="margin-top: 15px;">첫 일기 쓰기 📝</button>
+            </div>
+            
+            <!-- Record items dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Detail History Modal View -->
+    <div id="history-modal" class="modal-backdrop">
+      <div class="modal-content cute-card">
+        <header class="modal-header">
+          <div class="modal-date-badge">
+            <span id="modal-mood-emoji" class="modal-emoji">☀️</span>
+            <span id="modal-date-string" class="modal-date">2026년 5월 27일</span>
+          </div>
+          <button id="btn-modal-close" class="btn-close" aria-label="닫기">&times;</button>
+        </header>
+
+        <div class="modal-scroll-area">
+          <section class="modal-sec yellow-sec">
+            <h4>🌸 오늘 실제로 해낸 것들</h4>
+            <ul id="modal-accomplished">
+              <!-- dynamic -->
+            </ul>
+          </section>
+
+          <section class="modal-sec pink-sec">
+            <h4>🍃 스스로를 몰아붙인 부분</h4>
+            <p id="modal-criticism"><!-- dynamic --></p>
+          </section>
+
+          <section class="modal-sec blue-sec">
+            <h4>☀️ 오늘 괜찮았던 이유</h4>
+            <p id="modal-reason"><!-- dynamic --></p>
+          </section>
+
+          <section class="modal-sec green-sec">
+            <h4>🐾 내일은 이렇게 해보자</h4>
+            <p id="modal-suggestion"><!-- dynamic --></p>
+          </section>
+
+          <section class="modal-sec affirmation-sec">
+            <div class="polaroid-inner mini">
+              <p class="affirmation-text" id="modal-affirmation">"완벽하지 않아도 하루는 충분히 의미 있어."</p>
+            </div>
+          </section>
+        </div>
+
+        <footer class="modal-footer">
+          <button id="btn-modal-delete" class="btn btn-danger">🗑️ 이 기록 삭제하기</button>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript logic -->
+  <script src="app.js"></script>
+</body>
+</html>
