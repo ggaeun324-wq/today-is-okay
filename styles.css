@@ -1306,3 +1306,49 @@ body {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+/* ==========================================================================
+   AI SETTINGS LAYOUT & INPUT STYLES
+   ========================================================================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-label {
+  display: block;
+  font-family: var(--font-cute);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.settings-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  font-family: var(--font-warm);
+  font-size: 0.9rem;
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.settings-input:focus {
+  border-color: var(--primary-accent);
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 15px rgba(235, 186, 185, 0.12);
+}
+
+.settings-desc {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin-top: 6px;
+  word-break: keep-all;
+}
+

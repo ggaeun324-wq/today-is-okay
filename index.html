@@ -17,30 +17,39 @@
   <!-- App Wrapper (Mobile-first viewport container for sleek app feeling) -->
   <div class="app-container">
     
-    <!-- Top Global Bar (Header & Dark Mode Toggle) -->
+    <!-- Top Global Bar (Header & Actions) -->
     <header class="global-header">
       <div class="logo">
         <span class="logo-emoji">☁️</span>
         <h1 class="logo-text">오늘 괜찮았어</h1>
       </div>
-      <button id="theme-toggle" class="theme-toggle-btn" aria-label="테마 전환하기" title="테마 전환">
-        <!-- Sun icon (Light mode active) -->
-        <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <!-- Moon icon (Dark mode active) -->
-        <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
+      <div class="header-actions" style="display: flex; gap: 8px; align-items: center;">
+  <button id="btn-settings-open" class="theme-toggle-btn" aria-label="AI 맞춤 설정" title="AI 설정">
+    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+    </svg>
+  </button>
+  <span class="gpt-label" style="font-family: var(--font-cute); font-size: 0.75rem; color: var(--text-muted);">GPT 연동</span>
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="테마 전환하기" title="테마 전환">
+    <!-- Sun icon (Light mode active) -->
+    <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <!-- Moon icon (Dark mode active) -->
+    <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+</div>
     </header>
 
     <!-- Main Screens Container with Page Transitions -->
@@ -52,39 +61,7 @@
         <div class="mascot-container">
           <div class="gureum-mascot" id="main-mascot">
             <!-- Cute SVG Cloud Character -->
-            <svg class="cloud-svg" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ffffff" />
-                  <stop offset="100%" stop-color="#E8F4FD" />
-                </linearGradient>
-                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#C2D6EC" flood-opacity="0.4"/>
-                </filter>
-              </defs>
-              <!-- Cloud Body -->
-              <path class="cloud-body" filter="url(#shadow)" d="M 40,80 
-                       A 25,25 0 0,1 35,40 
-                       A 25,25 0 0,1 70,30 
-                       A 30,30 0 0,1 120,40 
-                       A 25,25 0 0,1 125,80 
-                       A 20,20 0 0,1 40,80 Z" fill="url(#cloudGrad)"/>
-              
-              <!-- Cute Blush Cheeks -->
-              <ellipse class="blush" cx="50" cy="67" rx="8" ry="4" fill="#FFAEC9" opacity="0.8"/>
-              <ellipse class="blush" cx="105" cy="67" rx="8" ry="4" fill="#FFAEC9" opacity="0.8"/>
-              
-              <!-- Eyes (smiling curves) -->
-              <path class="cloud-eye eye-left" d="M 45,60 Q 50,56 55,60" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
-              <path class="cloud-eye eye-right" d="M 100,60 Q 105,56 110,60" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
-              
-              <!-- Smiling Mouth -->
-              <path class="cloud-mouth" d="M 73,70 Q 77,75 81,70" stroke="#4A3F35" stroke-width="3" stroke-linecap="round" fill="none"/>
-              
-              <!-- Sparkles -->
-              <path class="cloud-sparkle sparkle-1" d="M20,25 L24,29 M24,25 L20,29" stroke="#FFF1A8" stroke-width="2.5" stroke-linecap="round"/>
-              <path class="cloud-sparkle sparkle-2" d="M135,30 L139,34 M139,30 L135,34" stroke="#FFF1A8" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
+            <img class="cloud-image" src="file:///C:/Users/k7979/.gemini/antigravity/brain/1de15555-2b16-4bbb-a7e2-212717c8c3af/cute_cloud_mascot_1779813280802.png" alt="Cute Cloud Mascot" style="width:100%; max-width:200px;"/>
           </div>
           <!-- Dynamic Speech Bubble -->
           <div class="speech-bubble">
@@ -157,39 +134,15 @@
 
         <form id="diary-form" class="diary-input-form" onsubmit="event.preventDefault();">
           
-          <!-- Field 1: Original Intended Plan -->
+          <!-- Unified Field: Unstructured Stream of Consciousness -->
           <div class="input-group card-group">
-            <label for="input-plan" class="input-label">
-              <span class="label-number">1</span>
-              원래는 어떤 하루를 보내고 싶었어?
+            <label for="input-unstructured" class="input-label" style="font-size: 1.3rem;">
+              <span class="label-number">☁️</span>
+              오늘 있었던 일이나 생각을 뒤죽박죽 편안하게 적어줘
             </label>
             <div class="textarea-wrapper">
-              <textarea id="input-plan" class="diary-textarea" placeholder="원래 머릿속으로 그리던 이상적인 계획을 적어줘요&#10;(예: 아침 7시 기상, 독서 1시간, 운동, 공부 3시간 완료하기)" maxlength="500" required></textarea>
-              <div class="char-count"><span id="char-plan">0</span>/500</div>
-            </div>
-          </div>
-
-          <!-- Field 2: Actual Achievements -->
-          <div class="input-group card-group">
-            <label for="input-actual" class="input-label">
-              <span class="label-number">2</span>
-              오늘 실제로 한 일을 편하게 적어줘
-            </label>
-            <div class="textarea-wrapper">
-              <textarea id="input-actual" class="diary-textarea" placeholder="아무리 소소한 일이라도 괜찮아요. 한 일들을 편안하게 나열해볼까요?&#10;(예: 9시에 일어나 밥을 챙겨 먹었고, 낮잠을 잤고, 저녁에 1시간 동안 알고리즘 공부를 끄적였어...)" maxlength="500" required></textarea>
-              <div class="char-count"><span id="char-actual">0</span>/500</div>
-            </div>
-          </div>
-
-          <!-- Field 3: Lingering Regrets/Thoughts -->
-          <div class="input-group card-group">
-            <label for="input-regret" class="input-label">
-              <span class="label-number">3</span>
-              지금 가장 마음에 걸리는 건 뭐야?
-            </label>
-            <div class="textarea-wrapper">
-              <textarea id="input-regret" class="diary-textarea" placeholder="머릿속에서 자꾸 나를 다그치는 생각이나 후회를 털어놓아 봐요&#10;(예: 계획했던 운동도 못 가고 공부도 거의 안 해서 자꾸 나 자신한테 실망스럽고 화가 나...)" maxlength="500" required></textarea>
-              <div class="char-count"><span id="char-regret">0</span>/500</div>
+              <textarea id="input-unstructured" class="diary-textarea" style="height: 320px;" placeholder="오늘 있었던 일, 아쉬웠던 점, 또는 머릿속에 맴도는 후회나 복잡한 감정들을 그냥 의식의 흐름대로 마구 털어놓아 보세요. 과거 기록을 고려하여 구름이가 깊이 있고 다정하게 정리해 드릴게요.&#10;&#10;예: 아.. 오늘 할 일 목록 반도 못 끝냈어. 회의 준비하느라 오전 다 날렸고, 점심도 대충 때웠는데 오후엔 집중이 안 돼서 멍때리다가 결국 운동도 빠졌어. 저녁에 요리 해먹으려 했는데 재료 사러 나갔다 온 것만으로 지쳐서 라면 끓여 먹었고... 자기 전에 내일 할 일 생각하니까 또 불안해지네. 나 왜 이렇게 시간 관리를 못할까?" maxlength="1500" required></textarea>
+              <div class="char-count"><span id="char-unstructured">0</span>/1500</div>
             </div>
           </div>
 
@@ -280,9 +233,9 @@
             <div class="card-content-area">
               <h3 class="card-title">오늘 실제로 해낸 것들</h3>
               <ul class="result-list" id="res-accomplished">
-                <li>아침에 잊지 않고 건강하게 식사를 챙겨 먹었습니다.</li>
-                <li>잠시나마 소중한 몸의 충전을 위해 단잠을 취했습니다.</li>
-                <li>마음이 힘들어도 1시간 동안 공부에 열심히 몰두했습니다.</li>
+                <li>아침에 건강한 식사를 챙기고 기분 좋은 시작을 했어요.</li>
+<li>잠시 휴식을 취해 몸과 마음을 재충전했어요.</li>
+<li>힘든 날에도 한 시간 정도 집중해서 공부했어요.</li>
               </ul>
             </div>
           </article>
@@ -461,6 +414,42 @@
 
         <footer class="modal-footer">
           <button id="btn-modal-delete" class="btn btn-danger">🗑️ 이 기록 삭제하기</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- AI Settings Modal View -->
+    <div id="settings-modal" class="modal-backdrop">
+      <div class="modal-content cute-card" style="max-height: 80%;">
+        <header class="modal-header">
+          <div class="modal-date-badge">
+            <span class="modal-emoji">⚙️</span>
+            <span class="modal-date">AI 맞춤 설정</span>
+          </div>
+          <button id="btn-settings-close" class="btn-close" aria-label="닫기">&times;</button>
+        </header>
+
+        <div class="modal-scroll-area">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="input-group">
+              <label for="settings-username" class="input-label" style="margin-bottom: 8px;">내 이름 (예: 가은님)</label>
+              <input type="text" id="settings-username" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; font-family: var(--font-warm); background-color: var(--bg-cream); color: var(--text-main); outline: none;" value="가은님">
+            </div>
+            
+            <div class="input-group">
+              <label for="settings-apikey" class="input-label" style="margin-bottom: 8px;">OpenAI API Key (선택사항)</label>
+              <input type="password" id="settings-apikey" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; font-family: var(--font-warm); background-color: var(--bg-cream); color: var(--text-main); outline: none;" placeholder="sk-proj-...">
+              <p style="font-size: 0.78rem; line-height: 1.5; color: var(--text-muted); margin-top: 8px; word-break: keep-all;">
+                * API 키를 등록하면 브라우저 내에서 직접 OpenAI 공식 ChatGPT 서버로 통신하여, 가은님이 캡쳐해주신 스크린샷처럼 <strong>소름 돋을 정도로 완벽하고 체계적인 멘탈 케어 분석 답변</strong>을 실시간 생성합니다.<br>
+                * 입력하신 API 키는 서버에 저장되지 않고 오직 사용자의 웹 브라우저 메모리(LocalStorage)에만 안전하게 로컬 보관됩니다.<br>
+                * API 키가 없을 경우에도, 자체 탑재된 초정밀 감성 파서 엔진이 뒤죽박죽된 글 속에서 내용을 구조화하여 체계적으로 정리해 드립니다!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="modal-footer">
+          <button id="btn-settings-save" class="btn btn-primary" style="padding: 12px 24px; border-radius: 16px;">저장하기 💛</button>
         </footer>
       </div>
     </div>
